@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.minami.minamiblog.post.model.PostDetailDto;
 import org.minami.minamiblog.post.model.PostDto;
 import org.minami.minamiblog.post.model.PostInsParam;
+import org.minami.minamiblog.post.model.PostUpdParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +25,18 @@ public class PostController {
         return service.getPost();
     }
 
-    @GetMapping("{postId}")
+    @GetMapping("/{postId}")
     public PostDetailDto getPostById(@PathVariable("postId") Long postId) {
         return service.getPostById(postId);
+    }
+
+    @PutMapping
+    public int updPost(@RequestBody PostUpdParam p) {
+        return service.updPost(p);
+    }
+
+    @DeleteMapping("/{postId}")
+    public int delPostById(@PathVariable("postId") Long postId) {
+        return service.delPostById(postId);
     }
 }

@@ -8,6 +8,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import org.minami.minamiblog.common.jpa.BaseEntity;
+import org.minami.minamiblog.post.model.PostUpdParam;
 
 import java.util.List;
 
@@ -35,4 +36,9 @@ public class Post extends BaseEntity {
 
     @OneToMany(mappedBy = "post")
     private List<Cmt> cmts;
+
+    public void updPost(PostUpdParam p) {
+        title = p.title();
+        content = p.content();
+    }
 }
