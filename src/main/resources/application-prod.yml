@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://${MARIA_HOST}:${MARIA_PORT}/${DATABASE_NAME}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${PASSWORD}
+
+api-key: ${API_KEY}
+
+server:
+  port: 5000

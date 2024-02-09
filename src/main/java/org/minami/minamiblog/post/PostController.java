@@ -1,6 +1,7 @@
 package org.minami.minamiblog.post;
 
 import lombok.RequiredArgsConstructor;
+import org.minami.minamiblog.post.model.PostDetailDto;
 import org.minami.minamiblog.post.model.PostDto;
 import org.minami.minamiblog.post.model.PostInsParam;
 import org.springframework.web.bind.annotation.*;
@@ -21,5 +22,10 @@ public class PostController {
     @GetMapping
     public List<PostDto> getPost() {
         return service.getPost();
+    }
+
+    @GetMapping("{postId}")
+    public PostDetailDto getPostById(@PathVariable("postId") Long postId) {
+        return service.getPostById(postId);
     }
 }

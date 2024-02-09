@@ -2,20 +2,17 @@ package org.minami.minamiblog.common.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDateTime;
+import lombok.experimental.SuperBuilder;
+import org.minami.minamiblog.common.jpa.BaseEntity;
 
 @Entity
 @Getter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cmt {
+public class Cmt extends BaseEntity {
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
     @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
@@ -27,9 +24,4 @@ public class Cmt {
 
     @Column(nullable = false)
     private String content;
-
-    @CreatedDate
-    @Column(updatable = false, nullable = false)
-    @ColumnDefault(value = "current_timestamp")
-    private LocalDateTime createdAt;
 }

@@ -9,6 +9,8 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import org.minami.minamiblog.common.jpa.BaseEntity;
 
+import java.util.List;
+
 @Entity
 @Getter
 @SuperBuilder
@@ -30,4 +32,7 @@ public class Post extends BaseEntity {
     @Column(nullable = false, columnDefinition = "tinyint")
     @ColumnDefault("0")
     private int deleted;
+
+    @OneToMany(mappedBy = "post")
+    private List<Cmt> cmts;
 }
